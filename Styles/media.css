@@ -1,0 +1,313 @@
+@media (max-width: 1024px) {
+    .Take-Your-Experience {
+        .Cards {
+            flex-wrap: wrap;
+            .Experience-Card {
+                width: calc(50% - 1rem);
+                min-width: 20rem;
+            }
+        }
+    }
+    
+    .Everything-you-can-do {
+        width: calc(100% - 4rem);
+        padding: 0 2rem;
+        
+        .Card-Section-Everything {
+            width: 80%;
+        }
+    }
+}
+@media (max-width: 900px) {
+    .Playing-All-Versions {
+        height: 22rem;
+        width: calc(100% - 2rem);
+        padding: 0 1rem;
+        .CreeperImg{
+            display:none;
+        }
+        .Text {
+            position: relative;
+            top: auto;
+            left: auto;
+            max-width: 100%;
+            height: auto;
+            text-align: center;
+            margin-bottom: 1rem;
+            
+            img { width: 14rem; }
+        }
+        
+        .Images {
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(15deg);
+            
+            img { width: 12rem; }
+        }
+        
+        .Images:nth-of-type(2) { transform: translate(-50%, -120%) rotate(15deg); }
+        .Images:nth-of-type(3) { transform: translate(-50%, -50%) rotate(15deg); }
+        .Images:nth-of-type(4) { transform: translate(-50%, 20%) rotate(15deg); }
+    }
+    .Step-Friends{
+        
+        height: auto;
+        min-height: 100dvh;
+        padding: 1rem;
+        
+        .Text{
+            max-width: 100%;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        
+        .Images-Friends{
+            position: relative;
+            bottom: unset;
+            left: unset;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+
+        }
+        
+        .Chat{
+            position: relative;
+            top: unset;
+            right: unset;
+            transform: none;
+            
+            width: 100%;
+            height: 70dvh;
+            margin-top: 1rem;
+        }
+    }
+    .Download-StepLauncher {
+        .Container {
+            flex-direction: column;
+            text-align: center;
+            
+            .Left { align-items: center; }
+            .Right{
+                margin-top: 5rem;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    body {
+        display: block; 
+        overflow-x: hidden;
+    }
+    
+    header {
+        flex-direction: row;
+        justify-content: space-between;
+        width: calc(100% - 1.5rem);
+        padding: 0 .75rem;
+        
+        .Name-App {
+            font-size: .6rem;
+            img { width: 1.8rem; }
+        }
+        
+        .Navegation {
+            display: none; 
+        }
+    }
+    
+    .Main-View {
+        height: auto;
+        min-height: 90dvh;
+        width: calc(100% - 2rem);
+        padding: 3rem 1rem 2rem 1rem;
+        gap: 1.5rem;
+        
+        .Logo {
+            gap: .75rem;
+            text-align: center;
+            
+            img:not(.ender_dragon) { width: 7rem; }
+            
+            h1 {
+                font-size: 1.1rem;
+                text-align: center;
+                line-height: 1.4;
+            }
+            
+            .ender_dragon {
+                width: 16rem;
+                inset: -3rem 50%;
+                transform: translateX(-50%); 
+                opacity: .35;
+                filter: drop-shadow(0 0 1rem rgb(77, 7, 134));
+            }
+        }
+        
+        .Buttons-App {
+            width: 90%;
+            max-width: 320px;
+            flex-direction: column;
+            height: auto;
+            gap: .6rem;
+            padding: .6rem;
+            
+            button {
+                width: 100%;
+                height: 2.8rem;
+                font-size: .85rem;
+            }
+        }
+    }
+    
+    .Take-Your-Experience {
+        width: 95%;
+        gap: 1.5rem;
+        margin: 0 auto;
+        padding-bottom: 2rem;
+        
+        .Cards {
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            width: 100%;
+            
+            .Experience-Card {
+                width: 100%;
+                height: auto;
+                min-height: 10rem;
+                
+                .Card-Header { font-size: .65rem; }
+                .Card-Body { 
+                    font-size: .85rem; 
+                    padding: 1rem .5rem; 
+                }
+            }
+        }
+        
+        .Preview-Images {
+            margin-top: 1rem;
+            border-radius: .4rem;
+            gap: 0;
+            
+            .Back-Button,
+            .Next-Button {
+                width: 2.2rem;
+                height: 2.2rem;
+                backdrop-filter: blur(8px);
+            }
+        }
+    }
+    
+    .Everything-you-can-do {
+        width: calc(100% - 2rem);
+        padding: 0 1rem;
+        
+        .Card-Section-Everything {
+            width: 100%; 
+            margin: 1rem 0 !important;
+            transform: none !important;
+            opacity: 1;
+            
+            .Header { font-size: .65rem; }
+            
+            .Body .Content {
+                width: calc(100% - 2rem);
+                padding: 1rem;
+                font-size: .85rem;
+                line-height: 1.5;
+            }
+        }
+    }
+    
+    .Coments-User {
+        min-height: auto; 
+        padding: 4rem 0;
+        
+        .Title {
+            width: calc(100% - 2rem);
+            padding: 0 1rem;
+            font-size: 1.8rem;
+        }
+        .User-Card{
+            opacity: 0.75;
+            &:hover{
+                opacity: 1;
+            }
+        }
+    }
+    
+    .Download-StepLauncher {
+        width: calc(100% - 2rem);
+        padding: 3rem 1rem;
+        
+        .Left {
+            h1 { font-size: 2.2rem; }
+            .Buttons {
+                flex-direction: column;
+                width: 100%;
+                a { justify-content: center; } 
+            }
+        }
+    }
+    
+    .Footer {
+        .Footer-Container {
+            width: calc(100% - 2rem);
+            padding: 2rem 1rem;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 2.5rem;
+        }
+        
+        .Branding { max-width: 100%; }
+        
+        .Links {
+            justify-content: center;
+            gap: 2rem;
+            width: 100%;
+            
+            .Column {
+                align-items: center;
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media (max-width: 600px) {
+    .Playing-All-Versions {
+        height: 23rem;
+        
+        .Text {
+            width: 90%;
+            margin: auto;
+            
+            h1 { font-size: 1.2rem; }
+            p { font-size: 0.85rem; }
+            img { width: 10rem; }
+        }
+        
+        .Images {
+            transform: translate(-50%, -50%) rotate(10deg);
+            img { width: 9rem; }
+        }
+        
+        .Images:nth-of-type(2) { transform: translate(-50%, -110%) rotate(10deg); }
+        .Images:nth-of-type(3) { transform: translate(-50%, -50%) rotate(10deg); }
+        .Images:nth-of-type(4) { transform: translate(-50%, 10%) rotate(10deg); }
+    }
+    
+    .Take-Your-Experience .Preview-Images {
+        aspect-ratio: 4 / 3; 
+    }
+    
+    .Download-StepLauncher {
+        .Left h1 { font-size: 1.8rem; }
+    }
+}
