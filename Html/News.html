@@ -3,26 +3,22 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
     <meta name="description" content="¡StepLauncher el mejor launcher de Minecraft Java Edition!" />
     <meta name="keywords" content="minecraft, launcher, steplauncher, novastepstudios" />
     <meta name="author" content="NovaStepStudios" />
-
     <meta property="og:title" content="StepLauncher" />
     <meta property="og:description" content="Launcher moderno para Minecraft Java Edition" />
     <meta property="og:image" content="../Content/Icons/icon.png" />
     <meta property="og:url" content="./Account" />
+    <meta name="view-transition" content="same-origin" />
     <meta property="og:type" content="website" />
-
     <link rel="icon" href="../Content/Icons/icon.png" />
-
     <link rel="preload" href="../Styles/global.css" as="style" />
     <link rel="preload" href="../Styles/fonts.css" as="style" />
-
     <link rel="stylesheet" href="../Styles/fonts.css" />
     <link rel="stylesheet" href="../Styles/global.css" />
-
-    <title>StepLauncher</title>
+    <link rel="stylesheet" href="../Styles/html/news.css" />
+    <title>StepLauncher | Noticias</title>
 </head>
 <body>
     <header>
@@ -30,64 +26,212 @@
             <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
             <h1>StepLauncher</h1>
         </div>
-
         <nav class="Navegation">
             <ul>
-                <li><a href="../home.html">Inicio</a></li>
+                <li><a href="../index.html">Inicio</a></li>
                 <li><a href="./Account.html">Cuenta</a></li>
-                <li><a href="./News.html">Novedades</a></li>
+                <li><a href="./Download.html">Descargar</a></li>
                 <li><a href="./Updates.html">Actualizaciones</a></li>
             </ul>
         </nav>
     </header>
-
+    
     <main>
-
+        <section class="News-Title">
+            <h1>¡Centro de Noticias y Novedades de StepLauncher!</h1>
+            <p>Bienvenido al lugar donde siempre estarás un paso adelante. Aquí encontrarás todo sobre las próximas versiones...</p>
+            <p>Disfruta de imágenes exclusivas, descubre secretos ocultos entre las noticias y mantente informado...</p>
+            <p>Además, te compartimos tips, curiosidades y contenido especial para que saques el máximo provecho...</p>
+        </section>
+        
+        <section class="Grid-Container-News" id="newsGrid"></section>
+        
+        <div class="Changelog_Containger" id="changelogModal"></div>
     </main>
-
+    
     <footer class="Footer">
         <div class="Footer-Container">
-            
             <div class="Branding">
                 <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
                 <h1>StepLauncher</h1>
                 <p>By NovaStepStudios</p>
             </div>
-
             <div class="Links">
-                
                 <div class="Column">
                     <h2>Producto</h2>
                     <ul>
-                        <li><a href="">Licencia</a></li>
-                        <li><a href="">Términos</a></li>
-                        <li><a href="">Condiciones</a></li>
+                        <li><a href="#">Licencia</a></li>
+                        <li><a href="#">Términos</a></li>
+                        <li><a href="#">Condiciones</a></li>
                     </ul>
                 </div>
-
                 <div class="Column">
                     <h2>Comunidad</h2>
                     <ul>
-                        <li><a href="https://github.com/Stepnicka012/NovaCore-Engine" target="_blank">NovaCore</a></li>
-                        <li><a href="https://github.com/Stepnicka012/Minecraft-Core-Master" target="_blank">MC Core</a></li>
-                        <li><a href="https://github.com/Stepnicka012/LuminaNotify" target="_blank">LuminaNotify</a></li>
-                        <li><a href="https://github.com/Stepnicka012/COptifine" target="_blank">COptifine</a></li>
+                        <li><a href="https://github.com/Stepnicka012/NovaCore-Engine" target="_blank" rel="noopener noreferrer">NovaCore</a></li>
+                        <li><a href="https://github.com/Stepnicka012/Minecraft-Core-Master" target="_blank" rel="noopener noreferrer">MC Core</a></li>
+                        <li><a href="https://github.com/Stepnicka012/LuminaNotify" target="_blank" rel="noopener noreferrer">LuminaNotify</a></li>
+                        <li><a href="https://github.com/Stepnicka012/COptifine" target="_blank" rel="noopener noreferrer">COptifine</a></li>
                     </ul>
                 </div>
-
                 <div class="Column">
                     <h2>Redes</h2>
                     <ul>
-                        <li><a href="https://www.instagram.com/StepnickaST" target="_blank">Instagram</a></li>
-                        <li><a href="https://www.youtube.com/@Stepnicka012" target="_blank">YouTube</a></li>
-                        <li><a href="https://discord.gg/37dYy9apwE" target="_blank">Discord</a></li>
-                        <li><a href="https://ko-fi.com/novastepstudios" target="_blank">Ko-Fi</a></li>
-                        <li><a href="https://www.patreon.com/c/NovaStepStudios" target="_blank">Patreon</a></li>
+                        <li><a href="https://www.instagram.com/StepnickaST" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+                        <li><a href="https://www.youtube.com/@Stepnicka012" target="_blank" rel="noopener noreferrer">YouTube</a></li>
+                        <li><a href="https://discord.gg/37dYy9apwE" target="_blank" rel="noopener noreferrer">Discord</a></li>
+                        <li><a href="https://ko-fi.com/novastepstudios" target="_blank" rel="noopener noreferrer">Ko-Fi</a></li>
+                        <li><a href="https://www.patreon.com/c/NovaStepStudios" target="_blank" rel="noopener noreferrer">Patreon</a></li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </footer>
+
+    <script>
+        const NEWS_URL = "https://bvcrytgetpzniqfqdsng.supabase.co/storage/v1/object/public/json/news.json";
+        const gridContainer = document.getElementById('newsGrid');
+        const modalContainer = document.getElementById('changelogModal');
+
+        // Cerrar modal al hacer clic fuera
+        modalContainer.addEventListener('click', (e) => {
+            if (e.target === modalContainer) closeChangelog();
+        });
+
+        async function loadNews() {
+            try {
+                const response = await fetch(NEWS_URL);
+                if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                const data = await response.json();
+                if (document.startViewTransition) {
+                    document.startViewTransition(() => renderCards(data));
+                } else {
+                    renderCards(data);
+                }
+            } catch (error) {
+                console.error("Error cargando noticias:", error);
+                gridContainer.innerHTML = `<p style="text-align:center; color:#ff8888;">❌ No se pudieron cargar las noticias. Intenta más tarde.</p>`;
+            }
+        }
+
+        function renderCards(data) {
+            gridContainer.innerHTML = '';
+            if (!data.length) {
+                gridContainer.innerHTML = `<p style="text-align:center;">No hay noticias disponibles por ahora.</p>`;
+                return;
+            }
+
+            data.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'News-Card';
+                // Asignamos nombres únicos para transiciones de imagen y título
+                const heroTransitionName = `hero-${index}`;
+                const titleTransitionName = `title-${index}`;
+
+                const shortDesc = item.description 
+                    ? (item.description.length > 120 ? item.description.substring(0, 120) + '…' : item.description)
+                    : 'Haz clic para ver los detalles completos de esta versión.';
+
+                card.innerHTML = `
+                    <div class="Hero">
+                        <img src="${escapeHtml(item.hero)}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async" style="view-transition-name: ${heroTransitionName};">
+                    </div>
+                    <div class="Header">
+                        <h1 style="view-transition-name: ${titleTransitionName};">${escapeHtml(item.title)}</h1>
+                    </div>
+                    <div class="Body">
+                        <p>${escapeHtml(shortDesc)}</p>
+                    </div>
+                `;
+
+                card.onclick = () => loadChangelog(item.changelog, item.hero, item.title, heroTransitionName, titleTransitionName);
+                gridContainer.appendChild(card);
+            });
+        }
+
+        async function loadChangelog(url, heroUrl, title, heroTransitionName, titleTransitionName) {
+            if (!url) return;
+
+            try {
+                const response = await fetch(url);
+                if (!response.ok) throw new Error(`Error ${response.status}`);
+                const htmlContent = await response.text();
+
+                // Construimos el contenido del modal con los mismos view-transition-name
+                const modalHTML = `
+                    <div class="Changelog-Content">
+                        <button class="Close-Changelog-Btn" aria-label="Cerrar">✕</button>
+                        <div class="Modal-Hero">
+                            <img src="${escapeHtml(heroUrl)}" alt="${escapeHtml(title)}" style="view-transition-name: ${heroTransitionName};">
+                        </div>
+                        <div class="Modal-Title">
+                            <h1 style="view-transition-name: ${titleTransitionName};">${escapeHtml(title)}</h1>
+                        </div>
+                        <div class="Changelog-Body">
+                            ${htmlContent}
+                        </div>
+                    </div>
+                `;
+
+                if (document.startViewTransition) {
+                    // Iniciamos transición: primero mostramos el modal con el contenido
+                    const transition = document.startViewTransition(() => {
+                        modalContainer.innerHTML = modalHTML;
+                        modalContainer.classList.add('active');
+                    });
+                    // Esperamos a que termine para asegurar eventos
+                    transition.finished.then(() => {
+                        const closeBtn = modalContainer.querySelector('.Close-Changelog-Btn');
+                        if (closeBtn) closeBtn.onclick = closeChangelog;
+                    });
+                } else {
+                    modalContainer.innerHTML = modalHTML;
+                    modalContainer.classList.add('active');
+                    const closeBtn = modalContainer.querySelector('.Close-Changelog-Btn');
+                    if (closeBtn) closeBtn.onclick = closeChangelog;
+                }
+            } catch (error) {
+                console.error("Error al obtener el changelog:", error);
+                modalContainer.innerHTML = `
+                    <div class="Changelog-Content">
+                        <button class="Close-Changelog-Btn" aria-label="Cerrar">✕</button>
+                        <div class="Changelog-Body">
+                            <p style="color:#ff8888; text-align:center;">No se pudo cargar el contenido del changelog.</p>
+                        </div>
+                    </div>
+                `;
+                modalContainer.classList.add('active');
+                const closeBtn = modalContainer.querySelector('.Close-Changelog-Btn');
+                if (closeBtn) closeBtn.onclick = closeChangelog;
+            }
+        }
+
+        function closeChangelog() {
+            if (document.startViewTransition) {
+                document.startViewTransition(() => {
+                    modalContainer.classList.remove('active');
+                    // Limpiamos después de la transición para no romper la animación inversa
+                    setTimeout(() => {
+                        if (!modalContainer.classList.contains('active')) modalContainer.innerHTML = '';
+                    }, 300);
+                });
+            } else {
+                modalContainer.classList.remove('active');
+                modalContainer.innerHTML = '';
+            }
+        }
+
+        function escapeHtml(str) {
+            if (!str) return '';
+            return str.replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        loadNews();
+    </script>
 </body>
 </html>

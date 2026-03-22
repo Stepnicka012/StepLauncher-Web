@@ -138,6 +138,16 @@
             }
         }
     }
+    .Images-Preview-Container{
+        margin: 1rem auto;
+        width: 100%;
+        height: 100%;
+        border-radius: .5rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 1;
+    }
     .Preview-Images{
         position: relative;
         margin: 1rem auto;
