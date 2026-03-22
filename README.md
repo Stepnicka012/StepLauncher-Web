@@ -1,8 +1,9 @@
 # StepLauncher Web
 
 Sitio oficial de **StepLauncher**, un launcher moderno, rápido y flexible para Minecraft Java Edition.
-[StepLauncher.github.io](https://stepnicka012.github.io/StepLauncher-Web/home.html)
-[StepLauncher.pages.dev](https://steplauncher.pages.dev/StepLauncher-Web-v2/home.html)
+[StepLauncher.github.io](https://stepnicka012.github.io/StepLauncher-Web/index.html)
+
+[StepLauncher.pages.dev](https://steplauncher.pages.dev)
 
 ## Características
 - Instalación rápida y automática (Java, assets, librerías)
