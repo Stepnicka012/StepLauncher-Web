@@ -21,6 +21,7 @@ body {
 }
 
 footer {
+    border:none !important;
     background-color: transparent !important;
 }
 

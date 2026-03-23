@@ -5,6 +5,7 @@ import { minify as minifyHTML } from "html-minifier-terser";
 import { minify as minifyJS } from "terser";
 import * as sass from "sass";
 import { transform } from "esbuild";
+import JavaScriptObfuscator from 'javascript-obfuscator';
 
 const DIST = "dist";
 
@@ -73,7 +74,26 @@ const jsFiles = await fg([`${DIST}/Script/**/*.js`]);
 
 for (const file of jsFiles) {
     try {
-        const content = await fs.readFile(file, "utf-8");
+        let content = await fs.readFile(file, "utf-8");
+        const fileName = path.basename(file);
+
+        if (fileName === "Account.js") {
+            console.log(`Protegiendo archivo crítico: ${fileName}`);
+            
+            const obfuscationResult = JavaScriptObfuscator.obfuscate(content, {
+                compact: true,
+                controlFlowFlattening: true,
+                controlFlowFlatteningThreshold: 1,
+                numbersToExpressions: true,
+                simplify: true,
+                stringArray: true,
+                stringArrayThreshold: 1,
+                splitStrings: true,
+                unicodeEscapeSequence: true
+            });
+            
+            content = obfuscationResult.getObfuscatedCode();
+        }
 
         const result = await minifyJS(content, {
             compress: true,
@@ -85,7 +105,7 @@ for (const file of jsFiles) {
         }
 
     } catch (err) {
-        console.error("Not Minify JS:", file);
+        console.error("Not Minify/Obfuscate JS:", file, err);
     }
 }
 

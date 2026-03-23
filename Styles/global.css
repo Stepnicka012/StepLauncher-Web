@@ -94,25 +94,6 @@ header{
                 &:hover{
                     text-shadow: 0 0 0.5em rgb(0,255,255,.5);
                     color: aqua;
-                    &::after{
-                        bottom: -60%;
-                        opacity: 1;
-                    }
-                }
-                &::after{
-                    content: '';
-                    position: absolute;
-                    bottom: -100px;
-                    left: 50%;
-                    transform: translateX(-50%);
-                    opacity: 0;
-                    width: 120%;
-                    height: 50px;
-                    background: linear-gradient(transparent,rgb(0,255,255,0.25));
-                    filter: drop-shadow(0 0 0.5em rgb(0,255,255,0.25));
-                    pointer-events: none;
-                    transition: opacity 250ms ease, bottom 250ms ease-in-out;
-                    z-index: -1;
                 }
             }
         }

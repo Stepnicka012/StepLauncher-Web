@@ -4,26 +4,31 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta name="description" content="¡StepLauncher el mejor launcher de Minecraft Java Edition!" />
-    <meta name="keywords" content="minecraft, launcher, steplauncher, novastepstudios" />
+    <title>StepLauncher — Actualizaciones</title>
+
+    <meta name="description" content="StepLauncher: todas las versiones del launcher más potente de Minecraft Java Edition." />
+    <meta name="keywords" content="minecraft, java, launcher, steplauncher, novastepstudios, releases, actualizaciones" />
     <meta name="author" content="NovaStepStudios" />
 
-    <meta property="og:title" content="StepLauncher" />
-    <meta property="og:description" content="Launcher moderno para Minecraft Java Edition" />
-    <meta property="og:image" content="../Content/Icons/icon.png" />
-    <meta property="og:url" content="./Account" />
+    <meta property="og:title" content="StepLauncher — Actualizaciones" />
+    <meta property="og:description" content="Todas las versiones de StepLauncher. Releases estables y PreReleases." />
+    <meta property="og:image" content="../Content/Page.png" />
     <meta property="og:type" content="website" />
 
-    <link rel="icon" href="../Content/Icons/icon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="StepLauncher — Actualizaciones" />
+    <meta name="twitter:description" content="El launcher más potente de Minecraft Java Edition" />
+    <meta name="twitter:image" content="../Content/Page.png" />
 
     <link rel="preload" href="../Styles/global.css" as="style" />
     <link rel="preload" href="../Styles/fonts.css" as="style" />
+    <link rel="preload" href="../Styles/html/updates.css" as="style" />
 
     <link rel="stylesheet" href="../Styles/fonts.css" />
     <link rel="stylesheet" href="../Styles/global.css" />
-    <link rel="stylesheet" href="../Styles/html/updates.css">
+    <link rel="stylesheet" href="../Styles/html/updates.css" />
 
-    <title>StepLauncher</title>
+    <link rel="icon" href="../Content/Icons/icon.png" />
 </head>
 <body>
     <header>
@@ -31,53 +36,73 @@
             <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
             <h1>StepLauncher</h1>
         </div>
-
         <nav class="Navegation">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="./Account.html">Cuenta</a></li>
                 <li><a href="./News.html">Novedades y Noticias</a></li>
-                <li><a href="./Updates.html">Actualizaciones</a></li>
+                <li><a href="./Download.html">Descargar</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <div class="Hero">
-            <div class="Text">
-                <h1>Centro de Actualizaciones de StepLauncher</h1>
-                <p>
-                    Aquí encontrarás todas las versiones de StepLauncher: Stable, Beta y Alpha.
-                    <br>
-                    <strong>Se recomienda usar versiones estables para evitar errores y problemas de compatibilidad.</strong>
-                </p>
+        <section class="Hero">
+            <div class="Gravity-Blocks" id="gravity-updates"></div>
+
+            <div class="Hero-Inner">
+                <div class="Text">
+                    <div class="Hero-Badge">
+                        <span class="Dot"></span>
+                        Centro de Actualizaciones
+                    </div>
+                    <h1>Todo el historial de<br><strong>StepLauncher</strong></h1>
+                    <p>
+                        Releases estables y PreReleases en un solo lugar.<br>
+                        <em>Usá siempre versiones estables para evitar errores.</em>
+                    </p>
+                </div>
+
+                <div class="Update-Latest" id="update-latest"></div>
             </div>
-            
-            <div class="Update-Latest">
+
+            <div class="Hero-Fade"></div>
+        </section>
+
+        <div class="Stats-Strip">
+            <div class="Stat">
+                <strong id="stat-releases">—</strong>
+                <span>Releases estables</span>
+            </div>
+            <div class="Divider"></div>
+            <div class="Stat">
+                <strong id="stat-pre">—</strong>
+                <span>PreReleases</span>
+            </div>
+            <div class="Divider"></div>
+            <div class="Stat">
+                <strong id="stat-latest">—</strong>
+                <span>Última versión</span>
             </div>
         </div>
-        
+
         <section class="All-Versions">
-            <div class="Title">
+            <div class="Section-Header">
                 <h1>Todas las versiones</h1>
-                <p>Explora y descarga cualquier versión disponible de StepLauncher.</p>
+                <p>Explorá y descargá cualquier versión disponible de StepLauncher.</p>
             </div>
-            
-            <div class="Versions-Grid">
-            </div>
+            <div class="Versions-Grid" id="versions-grid"></div>
         </section>
     </main>
-    
+
     <footer class="Footer">
         <div class="Footer-Container">
-            
             <div class="Branding">
                 <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
                 <h1>StepLauncher</h1>
                 <p>By NovaStepStudios</p>
             </div>
-
             <div class="Links">
-                
                 <div class="Column">
                     <h2>Producto</h2>
                     <ul>
@@ -86,7 +111,6 @@
                         <li><a href="">Condiciones</a></li>
                     </ul>
                 </div>
-
                 <div class="Column">
                     <h2>Comunidad</h2>
                     <ul>
@@ -96,7 +120,6 @@
                         <li><a href="https://github.com/Stepnicka012/COptifine" target="_blank">COptifine</a></li>
                     </ul>
                 </div>
-
                 <div class="Column">
                     <h2>Redes</h2>
                     <ul>
@@ -107,10 +130,10 @@
                         <li><a href="https://www.patreon.com/c/NovaStepStudios" target="_blank">Patreon</a></li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </footer>
-    <script src="../Script/Update.js"></script>
+
+    <script src="../Script/html/Update.js"></script>
 </body>
 </html>

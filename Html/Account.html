@@ -3,80 +3,402 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    
-    <meta name="description" content="¡StepLauncher el mejor launcher de Minecraft Java Edition!" />
-    <meta name="keywords" content="minecraft, launcher, steplauncher, novastepstudios" />
+    <title>StepLauncher — Mi Cuenta</title>
+    <meta name="description" content="Gestioná tu cuenta de StepLauncher: perfil, skins, capas, kits, amigos y seguridad." />
     <meta name="author" content="NovaStepStudios" />
-    
-    <meta property="og:title" content="StepLauncher" />
-    <meta property="og:description" content="Launcher moderno para Minecraft Java Edition" />
-    <meta property="og:image" content="../Content/Icons/icon.png" />
-    <meta property="og:url" content="./Account" />
-    <meta property="og:type" content="website" />
-    
-    <link rel="icon" href="../Content/Icons/icon.png" />
-    
     <link rel="preload" href="../Styles/global.css" as="style" />
     <link rel="preload" href="../Styles/fonts.css" as="style" />
-    
+    <link rel="preload" href="../Styles/html/account.css" as="style" />
     <link rel="stylesheet" href="../Styles/fonts.css" />
     <link rel="stylesheet" href="../Styles/global.css" />
-    
     <link rel="stylesheet" href="../Styles/html/account.css" />
-    <title>StepLauncher</title>
+    <link rel="icon" href="../Content/Icons/icon.png" />
 </head>
 <body>
-    <header class="Header">
+    <header>
         <div class="Name-App">
             <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
             <h1>StepLauncher</h1>
         </div>
-        
         <nav class="Navegation">
             <ul>
                 <li><a href="../index.html">Inicio</a></li>
                 <li><a href="./Download.html">Descargar</a></li>
-                <li><a href="./News.html">Novedades y Noticias</a></li>
+                <li><a href="./News.html">Novedades</a></li>
                 <li><a href="./Updates.html">Actualizaciones</a></li>
             </ul>
         </nav>
     </header>
-    <main>
-        <div class="Panel">
-            <div class="Login">
-                <img src="../Content/Others/Redeem-Hero_Mobile.png" loading="lazy" decoding="async" />
-                <h1 class="Title">¡Bienvenido de Vuelta!</h1>
-                
-                <div class="Form">
-                    <div class="Input_Custom">
-                        <label for="username">Nombre de Usuario</label>
-                        <input type="text" id="username">
-                    </div>
-                    <div class="Input_Custom">
-                        <label for="password">Contraseña</label>
-                        <input type="password" id="password">
-                    </div>
-                    <button id="loginBtn">Entrar</button>
+
+    <main id="app-main">
+
+        <div id="auth-view" class="Auth-View">
+            <div class="Auth-Left">
+                <img src="../Content/Others/Redeem-Hero_Mobile.png" loading="lazy" decoding="async" class="Hero-Art" />
+                <div class="Left-Text">
+                    <h2>El launcher más potente de<br><strong>Minecraft Java Edition</strong></h2>
+                    <p>Iniciá sesión para personalizar tu perfil, subir skins, capas y gestionar tus kits de personalización.</p>
                 </div>
-                
-                <div class="Actions">
-                    <a href="#Register">¿No tienes cuenta? Registrate</a>
+            </div>
+            <div class="Auth-Card" id="auth-card">
+                <div class="Card-Header">
+                    <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
+                    <div>
+                        <h1>¡Bienvenido de vuelta!</h1>
+                        <span>Ingresá con tu cuenta de StepLauncher</span>
+                    </div>
+                </div>
+                <div class="Form" id="login-form">
+                    <div class="Input-Group">
+                        <label for="username">Nombre de usuario</label>
+                        <input type="text" id="username" autocomplete="username" />
+                    </div>
+                    <div class="Input-Group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" id="password" autocomplete="current-password" />
+                    </div>
+                    <button id="loginBtn" class="Btn-Primary">Iniciar sesión</button>
+                    <div class="Form-Links">
+                        <a href="#" id="switchRegister">¿No tenés cuenta? Registrate</a>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <div id="dashboard-view" class="Dashboard-View hidden">
+            <aside class="Sidebar">
+                <div class="Sidebar-Profile">
+                    <canvas id="head-canvas" width="56" height="56"></canvas>
+                    <div class="Profile-Info">
+                        <strong id="sidebar-username">—</strong>
+                        <span class="Tier-Badge" id="sidebar-tier" data-tier="free">Free</span>
+                    </div>
+                </div>
+                <nav class="Sidebar-Nav">
+                    <button class="Nav-Item active" data-tab="profile">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                        Perfil
+                    </button>
+                    <button class="Nav-Item" data-tab="skins">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+                        Skins
+                    </button>
+                    <button class="Nav-Item" data-tab="capes">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L4 6v6c0 5.5 3.5 10.7 8 12 4.5-1.3 8-6.5 8-12V6l-8-4z"/></svg>
+                        Capas
+                    </button>
+                    <button class="Nav-Item" data-tab="kits">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 7H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V9a2 2 0 00-2-2z"/><path d="M16 7V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v2"/></svg>
+                        Kits
+                    </button>
+                    <button class="Nav-Item" data-tab="friends">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+                        Amigos
+                        <span class="Nav-Badge hidden" id="friends-badge">0</span>
+                    </button>
+                    <button class="Nav-Item" data-tab="plans">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        Planes
+                    </button>
+                    <button class="Nav-Item" data-tab="security">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                        Seguridad
+                    </button>
+                </nav>
+                <button class="Btn-Logout" id="logoutBtn">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4M16 17l5-5-5-5M21 12H9"/></svg>
+                    Cerrar sesión
+                </button>
+            </aside>
+
+            <div class="Dashboard-Content">
+
+                <section class="Tab-Panel active" id="tab-profile">
+                    <div class="Panel-Header">
+                        <h2>Perfil</h2>
+                        <p>Tu información pública en StepLauncher</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Form-Section">
+                            <h3>Información básica</h3>
+                            <div class="Form-Grid">
+                                <div class="Input-Group">
+                                    <label for="prof-username">Nombre de usuario</label>
+                                    <input type="text" id="prof-username" autocomplete="off" />
+                                </div>
+                                <div class="Input-Group">
+                                    <label for="prof-email">Correo electrónico</label>
+                                    <input type="email" id="prof-email" autocomplete="off" />
+                                </div>
+                                <div class="Input-Group full">
+                                    <label for="prof-bio">Bio <span class="Optional">(opcional)</span></label>
+                                    <textarea id="prof-bio" rows="3" maxlength="200" placeholder="Contá algo sobre vos..."></textarea>
+                                    <span class="Char-Count"><span id="bio-count">0</span>/200</span>
+                                </div>
+                            </div>
+                            <button class="Btn-Primary" id="save-profile-btn">Guardar cambios</button>
+                        </div>
+                        <div class="Form-Section">
+                            <h3>Detalles de tu cuenta</h3>
+                            <div class="Info-Grid">
+                                <div class="Info-Row"><span class="Info-Label">UUID</span><span class="Info-Value mono" id="prof-uuid">—</span></div>
+                                <div class="Info-Row"><span class="Info-Label">Plan</span><span class="Info-Value" id="prof-tier">—</span></div>
+                                <div class="Info-Row"><span class="Info-Label">Creada</span><span class="Info-Value" id="prof-created">—</span></div>
+                                <div class="Info-Row"><span class="Info-Label">Último acceso</span><span class="Info-Value" id="prof-lastlogin">—</span></div>
+                                <div class="Info-Row"><span class="Info-Label">Skin activa</span><span class="Info-Value" id="prof-skin">Sin skin</span></div>
+                                <div class="Info-Row"><span class="Info-Label">Capa activa</span><span class="Info-Value" id="prof-cape">Sin capa</span></div>
+                            </div>
+                        </div>
+                        <div class="Form-Section danger-zone">
+                            <h3>Zona de peligro</h3>
+                            <p class="Danger-Desc">Eliminar tu cuenta es permanente. Todos tus datos, skins y configuraciones serán borrados sin posibilidad de recuperación.</p>
+                            <button class="Btn-Danger" id="delete-account-btn">Eliminar mi cuenta</button>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="Tab-Panel" id="tab-skins">
+                    <div class="Panel-Header">
+                        <h2>Skins</h2>
+                        <p>Gestioná tu galería · Preview con skinview3d</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Upload-Zone" id="skin-upload-zone">
+                            <input type="file" id="skin-file" accept="image/png" class="hidden" />
+                            <div class="Upload-Inner">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                                <strong>Subir skin</strong>
+                                <span>PNG · máx 1MB · Arrastrá o hacé click</span>
+                            </div>
+                            <div class="Upload-Preview hidden" id="skin-preview-wrap">
+                                <div id="skin-upload-viewer" class="Skinview-Container small"></div>
+                                <div class="Upload-Preview-Info">
+                                    <input type="text" id="skin-name" placeholder="Nombre de la skin" maxlength="100" />
+                                    <div class="Upload-Actions">
+                                        <button class="Btn-Primary small" id="confirm-skin-upload">Subir</button>
+                                        <button class="Btn-Ghost small" id="cancel-skin-upload">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Usage-Bar" id="skin-usage"></div>
+                        <div class="Asset-Grid" id="skins-grid"><div class="Grid-Loading">Cargando skins...</div></div>
+                    </div>
+                </section>
+
+                <section class="Tab-Panel" id="tab-capes">
+                    <div class="Panel-Header">
+                        <h2>Capas</h2>
+                        <p>Gestioná tu colección de capas · Preview con skinview3d</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Upload-Zone" id="cape-upload-zone">
+                            <input type="file" id="cape-file" accept="image/png" class="hidden" />
+                            <div class="Upload-Inner">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
+                                <strong>Subir capa</strong>
+                                <span>PNG · máx 512KB · Arrastrá o hacé click</span>
+                            </div>
+                            <div class="Upload-Preview hidden" id="cape-preview-wrap">
+                                <div id="cape-upload-viewer" class="Skinview-Container small"></div>
+                                <div class="Upload-Preview-Info">
+                                    <input type="text" id="cape-name" placeholder="Nombre de la capa" maxlength="100" />
+                                    <div class="Upload-Actions">
+                                        <button class="Btn-Primary small" id="confirm-cape-upload">Subir</button>
+                                        <button class="Btn-Ghost small" id="cancel-cape-upload">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="Usage-Bar" id="cape-usage"></div>
+                        <div class="Asset-Grid" id="capes-grid"><div class="Grid-Loading">Cargando capas...</div></div>
+                    </div>
+                </section>
+
+                <section class="Tab-Panel" id="tab-kits">
+                    <div class="Panel-Header">
+                        <h2>Kits</h2>
+                        <p>Combinaciones de skin + capa listas para activar de una</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Form-Section">
+                            <h3>Nuevo kit</h3>
+                            <div class="Form-Grid">
+                                <div class="Input-Group">
+                                    <label for="kit-title">Nombre</label>
+                                    <input type="text" id="kit-title" maxlength="100" placeholder="Ej: Kit PvP" />
+                                </div>
+                                <div class="Input-Group">
+                                    <label for="kit-desc">Descripción <span class="Optional">(opcional)</span></label>
+                                    <input type="text" id="kit-desc" maxlength="200" />
+                                </div>
+                                <div class="Input-Group">
+                                    <label>Skin</label>
+                                    <select id="kit-skin-select"><option value="">Sin skin</option></select>
+                                </div>
+                                <div class="Input-Group">
+                                    <label>Capa</label>
+                                    <select id="kit-cape-select"><option value="">Sin capa</option></select>
+                                </div>
+                            </div>
+                            <button class="Btn-Primary" id="create-kit-btn">Crear kit</button>
+                        </div>
+                        <div class="Usage-Bar" id="kit-usage"></div>
+                        <div class="Kit-Grid" id="kits-grid"><div class="Grid-Loading">Cargando kits...</div></div>
+                    </div>
+                </section>
+
+                <section class="Tab-Panel" id="tab-friends">
+                    <div class="Panel-Header">
+                        <h2>Amigos</h2>
+                        <p>Buscá, agregá y gestioná tus amigos en StepLauncher</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Form-Section">
+                            <h3>Buscar jugadores</h3>
+                            <div class="Search-Bar">
+                                <input type="text" id="friends-search" placeholder="Nombre de usuario..." maxlength="50" />
+                                <button class="Btn-Primary" id="friends-search-btn">Buscar</button>
+                            </div>
+                            <div id="search-results" class="User-List hidden"></div>
+                        </div>
+                        <div class="Form-Section">
+                            <h3>Solicitudes pendientes <span class="Section-Count" id="pending-count"></span></h3>
+                            <div id="pending-list" class="User-List"><div class="Grid-Loading">Cargando...</div></div>
+                        </div>
+                        <div class="Form-Section">
+                            <h3>Mis amigos <span class="Section-Count" id="friends-count"></span></h3>
+                            <div id="friends-list" class="User-List"><div class="Grid-Loading">Cargando...</div></div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="Tab-Panel" id="tab-plans">
+                    <div class="Panel-Header">
+                        <h2>Planes</h2>
+                        <p>Tu plan actual y las mejoras disponibles</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Current-Plan-Banner" id="current-plan-banner"></div>
+                        <div class="Plans-Grid">
+                            <div class="Plan-Card" data-tier="free">
+                                <div class="Plan-Header-Block">
+                                    <span class="Plan-Name">Free</span>
+                                    <span class="Plan-Price">Gratis</span>
+                                </div>
+                                <ul class="Plan-Features">
+                                    <li><span class="Check">✓</span>3 skins</li>
+                                    <li><span class="Check">✓</span>4 capas</li>
+                                    <li><span class="Check">✓</span>5 kits</li>
+                                    <li><span class="Check">✓</span>Skins 64px</li>
+                                    <li><span class="Cross">✗</span>Soporte prioritario</li>
+                                </ul>
+                                <button class="Plan-Btn" disabled>Plan base</button>
+                            </div>
+                            <div class="Plan-Card highlight" data-tier="basic">
+                                <div class="Plan-Popular">Popular</div>
+                                <div class="Plan-Header-Block">
+                                    <span class="Plan-Name">Basic</span>
+                                    <span class="Plan-Price">Próximamente</span>
+                                </div>
+                                <ul class="Plan-Features">
+                                    <li><span class="Check">✓</span>15 skins</li>
+                                    <li><span class="Check">✓</span>15 capas</li>
+                                    <li><span class="Check">✓</span>20 kits</li>
+                                    <li><span class="Check">✓</span>Skins 128px</li>
+                                    <li><span class="Check">✓</span>Soporte básico</li>
+                                </ul>
+                                <button class="Plan-Btn" disabled>Próximamente</button>
+                            </div>
+                            <div class="Plan-Card" data-tier="pro">
+                                <div class="Plan-Header-Block">
+                                    <span class="Plan-Name">Pro</span>
+                                    <span class="Plan-Price">Próximamente</span>
+                                </div>
+                                <ul class="Plan-Features">
+                                    <li><span class="Check">✓</span>60 skins</li>
+                                    <li><span class="Check">✓</span>50 capas</li>
+                                    <li><span class="Check">✓</span>40 kits</li>
+                                    <li><span class="Check">✓</span>Skins 512px</li>
+                                    <li><span class="Check">✓</span>Soporte prioritario</li>
+                                </ul>
+                                <button class="Plan-Btn" disabled>Próximamente</button>
+                            </div>
+                            <div class="Plan-Card legend-card" data-tier="legend">
+                                <div class="Plan-Popular legend-badge">Legend</div>
+                                <div class="Plan-Header-Block">
+                                    <span class="Plan-Name">Legend</span>
+                                    <span class="Plan-Price">Próximamente</span>
+                                </div>
+                                <ul class="Plan-Features">
+                                    <li><span class="Check">✓</span>Skins ilimitadas</li>
+                                    <li><span class="Check">✓</span>Capas ilimitadas</li>
+                                    <li><span class="Check">✓</span>Kits ilimitados</li>
+                                    <li><span class="Check">✓</span>Skins 512px</li>
+                                    <li><span class="Check">✓</span>Soporte dedicado</li>
+                                </ul>
+                                <button class="Plan-Btn" disabled>Próximamente</button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="Tab-Panel" id="tab-security">
+                    <div class="Panel-Header">
+                        <h2>Seguridad</h2>
+                        <p>Contraseña y sesiones activas de tu cuenta</p>
+                    </div>
+                    <div class="Panel-Body">
+                        <div class="Form-Section">
+                            <h3>Cambiar contraseña</h3>
+                            <div class="Form-Grid">
+                                <div class="Input-Group full">
+                                    <label for="sec-current">Contraseña actual</label>
+                                    <input type="password" id="sec-current" autocomplete="current-password" />
+                                </div>
+                                <div class="Input-Group">
+                                    <label for="sec-new">Nueva contraseña</label>
+                                    <input type="password" id="sec-new" autocomplete="new-password" />
+                                </div>
+                                <div class="Input-Group">
+                                    <label for="sec-new2">Repetir nueva contraseña</label>
+                                    <input type="password" id="sec-new2" autocomplete="new-password" />
+                                </div>
+                            </div>
+                            <button class="Btn-Primary" id="change-password-btn">Cambiar contraseña</button>
+                        </div>
+                        <div class="Form-Section">
+                            <h3>Sesiones activas</h3>
+                            <p class="Section-Desc">Las sesiones <strong>launcher</strong> duran 7 días · las de <strong>web</strong> duran 1 día. Podés revocar cualquiera individualmente.</p>
+                            <div id="sessions-list" class="Sessions-List"><div class="Grid-Loading">Cargando sesiones...</div></div>
+                            <button class="Btn-Warning" id="logout-all-btn" style="margin-top:1rem;">Cerrar todas las sesiones</button>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+
+        <div class="Modal-Overlay hidden" id="modal-overlay">
+            <div class="Modal" id="modal">
+                <h2 id="modal-title"></h2>
+                <p id="modal-body"></p>
+                <div id="modal-extra"></div>
+                <div class="Modal-Actions" id="modal-actions"></div>
+            </div>
+        </div>
+
+        <div class="Toast-Container" id="toast-container"></div>
     </main>
-    
+
     <footer class="Footer">
         <div class="Footer-Container">
-            
             <div class="Branding">
                 <img src="../Content/Icons/icon.png" loading="lazy" decoding="async" />
                 <h1>StepLauncher</h1>
                 <p>By NovaStepStudios</p>
             </div>
-            
             <div class="Links">
-                
                 <div class="Column">
                     <h2>Producto</h2>
                     <ul>
@@ -85,7 +407,6 @@
                         <li><a href="">Condiciones</a></li>
                     </ul>
                 </div>
-                
                 <div class="Column">
                     <h2>Comunidad</h2>
                     <ul>
@@ -95,7 +416,6 @@
                         <li><a href="https://github.com/Stepnicka012/COptifine" target="_blank">COptifine</a></li>
                     </ul>
                 </div>
-                
                 <div class="Column">
                     <h2>Redes</h2>
                     <ul>
@@ -106,10 +426,9 @@
                         <li><a href="https://www.patreon.com/c/NovaStepStudios" target="_blank">Patreon</a></li>
                     </ul>
                 </div>
-
             </div>
         </div>
     </footer>
-    <script src="../Script/html/"></script>
+    <script type="module" src="../Script/html/Account.js"></script>
 </body>
 </html>

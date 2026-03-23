@@ -3,22 +3,37 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="¡StepLauncher el mejor launcher de Minecraft Java Edition!" />
-    <meta name="keywords" content="minecraft, launcher, steplauncher, novastepstudios" />
+    
+    <title>StepLauncher - Noticias Y Novedades</title>
+    
+    <meta name="description" content="Noticias y actualizaciones de StepLauncher, el launcher más potente de Minecraft Java Edition." />
+    <meta name="keywords" content="minecraft, launcher, steplauncher, noticias, updates, novastepstudios" />
     <meta name="author" content="NovaStepStudios" />
-    <meta property="og:title" content="StepLauncher" />
-    <meta property="og:description" content="Launcher moderno para Minecraft Java Edition" />
-    <meta property="og:image" content="../Content/Icons/icon.png" />
-    <meta property="og:url" content="./Account" />
-    <meta name="view-transition" content="same-origin" />
+    
+    <meta property="og:title" content="StepLauncher | Noticias" />
+    <meta property="og:description" content="Mantente al día con las últimas novedades y actualizaciones de StepLauncher." />
+    <meta property="og:image" content="../Content/Page.png" />
+    <meta property="og:url" content="/News" />
     <meta property="og:type" content="website" />
-    <link rel="icon" href="../Content/Icons/icon.png" />
+    <meta property="og:site_name" content="StepLauncher" />
+    
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="StepLauncher | Noticias" />
+    <meta name="twitter:description" content="Últimas novedades de StepLauncher" />
+    <meta name="twitter:image" content="../Content/Page.png" />
+    
+    <meta name="view-transition" content="same-origin" />
+    
     <link rel="preload" href="../Styles/global.css" as="style" />
     <link rel="preload" href="../Styles/fonts.css" as="style" />
+    <link rel="preload" href="../Styles/html/news.css" />
+
     <link rel="stylesheet" href="../Styles/fonts.css" />
     <link rel="stylesheet" href="../Styles/global.css" />
     <link rel="stylesheet" href="../Styles/html/news.css" />
-    <title>StepLauncher | Noticias</title>
+    
+    <!-- 🖼️ Icono -->
+    <link rel="icon" href="../Content/Icons/icon.png" />
 </head>
 <body>
     <header>
@@ -87,17 +102,17 @@
             </div>
         </div>
     </footer>
-
+    
     <script>
         const NEWS_URL = "https://bvcrytgetpzniqfqdsng.supabase.co/storage/v1/object/public/json/news.json";
         const gridContainer = document.getElementById('newsGrid');
         const modalContainer = document.getElementById('changelogModal');
-
+        
         // Cerrar modal al hacer clic fuera
         modalContainer.addEventListener('click', (e) => {
             if (e.target === modalContainer) closeChangelog();
         });
-
+        
         async function loadNews() {
             try {
                 const response = await fetch(NEWS_URL);
@@ -113,25 +128,25 @@
                 gridContainer.innerHTML = `<p style="text-align:center; color:#ff8888;">❌ No se pudieron cargar las noticias. Intenta más tarde.</p>`;
             }
         }
-
+        
         function renderCards(data) {
             gridContainer.innerHTML = '';
             if (!data.length) {
                 gridContainer.innerHTML = `<p style="text-align:center;">No hay noticias disponibles por ahora.</p>`;
                 return;
             }
-
+            
             data.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'News-Card';
                 // Asignamos nombres únicos para transiciones de imagen y título
                 const heroTransitionName = `hero-${index}`;
                 const titleTransitionName = `title-${index}`;
-
+                
                 const shortDesc = item.description 
-                    ? (item.description.length > 120 ? item.description.substring(0, 120) + '…' : item.description)
-                    : 'Haz clic para ver los detalles completos de esta versión.';
-
+                ? (item.description.length > 120 ? item.description.substring(0, 120) + '…' : item.description)
+                : 'Haz clic para ver los detalles completos de esta versión.';
+                
                 card.innerHTML = `
                     <div class="Hero">
                         <img src="${escapeHtml(item.hero)}" alt="${escapeHtml(item.title)}" loading="lazy" decoding="async" style="view-transition-name: ${heroTransitionName};">
@@ -143,20 +158,20 @@
                         <p>${escapeHtml(shortDesc)}</p>
                     </div>
                 `;
-
+                
                 card.onclick = () => loadChangelog(item.changelog, item.hero, item.title, heroTransitionName, titleTransitionName);
                 gridContainer.appendChild(card);
             });
         }
-
+        
         async function loadChangelog(url, heroUrl, title, heroTransitionName, titleTransitionName) {
             if (!url) return;
-
+            
             try {
                 const response = await fetch(url);
                 if (!response.ok) throw new Error(`Error ${response.status}`);
                 const htmlContent = await response.text();
-
+                
                 // Construimos el contenido del modal con los mismos view-transition-name
                 const modalHTML = `
                     <div class="Changelog-Content">
@@ -172,7 +187,7 @@
                         </div>
                     </div>
                 `;
-
+                
                 if (document.startViewTransition) {
                     // Iniciamos transición: primero mostramos el modal con el contenido
                     const transition = document.startViewTransition(() => {
@@ -205,7 +220,7 @@
                 if (closeBtn) closeBtn.onclick = closeChangelog;
             }
         }
-
+        
         function closeChangelog() {
             if (document.startViewTransition) {
                 document.startViewTransition(() => {
@@ -220,7 +235,7 @@
                 modalContainer.innerHTML = '';
             }
         }
-
+        
         function escapeHtml(str) {
             if (!str) return '';
             return str.replace(/[&<>]/g, function(m) {
@@ -230,7 +245,7 @@
                 return m;
             });
         }
-
+        
         loadNews();
     </script>
 </body>

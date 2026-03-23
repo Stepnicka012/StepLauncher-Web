@@ -225,6 +225,20 @@
     min-height: 100dvh;
     position: relative;
     overflow: hidden;
+    &::after{
+        content:'';
+        position: absolute;
+        bottom:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-image: url('../../Content/Others/wave.png');
+        background-size: 100% 50%;
+        background-repeat: no-repeat;
+        filter: invert(100%);
+        background-position: bottom center;
+        z-index:0;
+    }
     .Gravity-Blocks{
         position: absolute;
         inset: 0;
@@ -251,8 +265,8 @@
             content:'';
             position: absolute;
             inset:0;
-            filter: blur(5px);
-            background-image: url('../../Content/Background/5.webp');
+            /* filter: blur(5px); */
+            background-image: url('../../Content/Background/8.png');
             background-position: center center;
             background-size: cover;
             z-index: -1;
@@ -270,6 +284,7 @@
         transform: translateX(0);
         transition: all .6s cubic-bezier(0.77, 0, 0.175, 1);
         overflow: hidden;
+        z-index: 2;
         .Header{
             width: calc(100% - 2rem);
             height: 2.5rem;
@@ -302,7 +317,6 @@
     .Card-Section-Everything:nth-child(even){
         margin-left: auto;
         transform: translateX(100px);
-        
     }
     .Card-Section-Everything.show{
         opacity: .75;
@@ -319,13 +333,29 @@
     position: relative;
     width: calc(100% - 2rem);
     padding: 1rem 1rem;
-    box-shadow: 0 0 1rem #0005;
     margin: 0 auto;
     height: 100dvh;
-    background: linear-gradient(transparent,black),url('../../Content/Background/6.jpg');
+    background: linear-gradient(transparent,black),url('../../Content/Background/7.png');
     background-size: cover;
     background-position: center center;
+    z-index:1;
+    &::after{
+        content:'';
+        position: absolute;
+        top:0;
+        left:0;
+        width:100%;
+        height:100%;
+        background-image: url('../../Content/Others/wave.png');
+        background-size: 100% 50%;
+        background-repeat: no-repeat;
+        background-position: bottom center;
+        filter: invert(100%);
+        transform: scaleY(-1) scaleX(-1);
+        z-index:-1;
+    }
     .Text{
+        text-shadow: 0 0 1rem #000;
         margin: 1rem;
         font-family: 'Lexend',Arial, Helvetica, sans-serif;
         max-width: 550px;
@@ -541,6 +571,14 @@
         .Track{ animation:scroll-left 40s linear infinite; }
     }
     
+    &::after{
+        content:"";
+        position:absolute;
+        inset:0;
+        background:linear-gradient(#000 0%,transparent 30%,transparent 70%,#000 100%);
+        z-index:2;
+        pointer-events:none;
+    }
     &::before{
         content:"";
         position:absolute;
